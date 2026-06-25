@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тур по Дагестану | Горный гид</title>
+    <style>
+        /* ===== ОБЩИЕ СТИЛИ ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* ===== ГЛАВНЫЙ ЭКРАН С ФОНОМ ===== */
+        .hero {
+            height: 100vh;
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        /* Размытый оверлей */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 70px;
+            font-weight: 800;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.8);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .hero-content h1 span {
+            color: #f39c12;
+        }
+        
+        .hero-content p {
+            font-size: 22px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn-main {
+            display: inline-block;
+            padding: 16px 50px;
+            background: #f39c12;
+            color: #1a1a1a;
+            font-size: 20px;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-main:hover {
+            background: #e67e22;
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(243, 156, 18, 0.4);
+        }
+        
+        /* ===== НАВИГАЦИЯ ===== */
+        nav {
+            background: rgba(26, 26, 26, 0.95);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #f39c12;
+            backdrop-filter: blur(10px);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        nav ul li a {
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+            font-size: 15px;
+        }
+        
+        nav ul li a:hover {
+            background: #f39c12;
+            color: #1a1a1a;
+        }
+        
+        /* ===== КОНТЕЙНЕР ===== */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        /* ===== ЗАГОЛОВКИ ===== */
+        .section-title {
+            text-align: center;
+            font-size: 44px;
+            margin-bottom: 15px;
+            color: #f39c12;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #aaa;
+            margin-bottom: 50px;
+        }
+        
+        /* ===== КАРТОЧКИ ТУРОВ ===== */
+        .tours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .tour-card {
+            background: #2a2a2a;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: 0.4s;
+            border: 1px solid #333;
+        }
+        
+        .tour-card:hover {
+            transform: translateY(-10px);
+            border-color: #f39c12;
+            box-shadow: 0 15px 50px rgba(243, 156, 18, 0.15);
+        }
+        
+        .tour-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        
+        .tour-card .info {
+            padding: 25px;
+        }
+        
+        .tour-card .info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #f39c12;
+        }
+        
+        .tour-card .info p {
+            color: #bbb;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+        
+        .tour-card .info ul {
+            color: #ccc;
+            list-style: none;
+            margin-bottom: 15px;
+        }
+        
+        .tour-card .info ul li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .tour-card .info ul li::before {
+            content: '✓';
+            color: #f39c12;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .tour-price {
+            display: inline-block;
+            background: #f39c12;
+            color: #1a1a1a;
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 18px;
+            margin-top: 5px;
+        }
+        
+        .btn-detail {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 30px;
+            background: transparent;
+            border: 2px solid #f39c12;
+            color: #f39c12;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        
+        .btn-detail:hover {
+            background: #f39c12;
+            color: #1a1a1a;
+        }
+        
+        /* ===== ИНФОРМАЦИЯ О ГИДЕ ===== */
+        .guide-section {
+            background: #2a2a2a;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            border: 1px solid #333;
+            margin-top: 40px;
+        }
+        
+        .guide-section img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #f39c12;
+        }
+        
+        .guide-info h3 {
+            font-size: 30px;
+            color: #f39c12;
+            margin-bottom: 5px;
+        }
+        
+        .guide-info .sub {
+            color: #aaa;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .guide-info p {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        
+        .guide-info .languages {
+            color: #f39c12;
+            font-weight: 600;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-whatsapp {
+            display: inline-block;
+            padding: 12px 35px;
+            background: #25D366;
+            color: #fff;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+        
+        .btn-whatsapp:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 30px rgba(37, 211, 102, 0.4);
+        }
+        
+        .btn-telegram {
+            display: inline-block;
+            padding: 12px 35px;
+            background: #0088cc;
+            color: #fff;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+        
+        .btn-telegram:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 30px rgba(0, 136, 204, 0.4);
+        }
+        
+        /* ===== ПОДВАЛ ===== */
+        footer {
+            background: #1a1a1a;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid #333;
+            color: #888;
+            font-size: 14px;
+        }
+        
+        footer span {
+            color: #f39c12;
+        }
+        
+        /* ===== АДАПТИВНОСТЬ ===== */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 40px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .guide-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                padding: 8px 15px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== ГЛАВНЫЙ ЭКРАН ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🏔️ <span>Тур</span> по Дагестану</h1>
+            <p>Откройте для себя невероятные горы, каньоны и древние города</p>
+            <a href="#tours" class="btn-main">Смотреть туры</a>
+        </div>
+    </section>
+    
+    <!-- ===== НАВИГАЦИЯ ===== -->
+    <nav>
+        <ul>
+            <li><a href="#tours">Туры</a></li>
+            <li><a href="#guide">Гид</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+        </ul>
+    </nav>
+    
+    <!-- ===== ТУРЫ ===== -->
+    <div class="container" id="tours">
+        <h2 class="section-title">Наши туры</h2>
+        <p class="section-subtitle">Выберите свой идеальный маршрут по Дагестану</p>
+        
+        <div class="tours-grid">
+            <!-- ===== ТУР 1: СУЛАКСКИЙ КАНЬОН ===== -->
+            <div class="tour-card">
+                <img src="images/sulak-boat.jpg" alt="Сулакский каньон">
+                <div class="info">
+                    <h3>🏞️ Сулакский каньон</h3>
+                    <ul>
+                        <li>🚤 Прогулка на катере</li>
+                        <li>👀 Смотровая площадка</li>
+                        <li>💧 Чиркейское водохранилище</li>
+                        <li>🐟 Обед в форелевом хозяйстве (свежая рыба с фермы)</li>
+                    </ul>
+                    <span class="tour-price">7 000 ₽</span>
+                    <br>
+                    <a href="sulak.html" class="btn-detail">Подробнее →</a>
+                </div>
+            </div>
+            
+            <!-- ===== ТУР 2: ДЕРБЕНТ ===== -->
+            <div class="tour-card">
+                <img src="images/derbent-fort.jpg" alt="Дербент">
+                <div class="info">
+                    <h3>🏛️ История Дербента</h3>
+                    <ul>
+                        <li>🏰 Крепость Нарын-Кала</li>
+                        <li>🏘️ Старый город</li>
+                        <li>🕌 Самая древняя мечеть России</li>
+                        <li>🌊 Набережная и Каспийское море</li>
+                        <li>✈️ Экраноплан «Лунь»</li>
+                    </ul>
+                    <span class="tour-price">6 000 ₽</span>
+                    <br>
+                    <a href="derbent.html" class="btn-detail">Подробнее →</a>
+                </div>
+            </div>
+            
+            <!-- ===== ТУР 3: ГУНИБ ===== -->
+            <div class="tour-card">
+                <img src="images/gunib-road.jpg" alt="Гуниб">
+                <div class="info">
+                    <h3>⛰️ Гуниб</h3>
+                    <ul>
+                        <li>🛣️ Необычные горные дороги</li>
+                        <li>🏔️ Красивейшие виды</li>
+                        <li>🍲 Местная кухня</li>
+                        <li>📜 Исторические места</li>
+                    </ul>
+                    <span class="tour-price">8 000 ₽</span>
+                    <br>
+                    <a href="gunib.html" class="btn-detail">Подробнее →</a>
+                </div>
+            </div>
+            
+            <!-- ===== ТУР 4: ПЕСЧАНАЯ ГОРА ===== -->
+            <div class="tour-card">
+                <img src="images/pesok-dune.jpg" alt="Песчаная гора">
+                <div class="info">
+                    <h3>🏜️ Песчаная гора</h3>
+                    <ul>
+                        <li>🏖️ Огромный песчаный бархан</li>
+                        <li>🌅 Фотосессия на закате</li>
+                        <li>🌿 Редкие растения</li>
+                        <li>🦅 Экскурсия по заповеднику</li>
+                        <li>🏍️ Прогулка на квадроциклах</li>
+                    </ul>
+                    <span class="tour-price">5 000 ₽</span>
+                    <br>
+                    <a href="pesok.html" class="btn-detail">Подробнее →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ===== ИНФОРМАЦИЯ О ГИДЕ ===== -->
+    <div class="container" id="guide">
+        <h2 class="section-title">Ваш гид</h2>
+        <div class="guide-section">
+            <img src="images/guide-photo.jpg" alt="Исмаил">
+            <div class="guide-info">
+                <h3>Исмаил</h3>
+                <div class="sub">Гид по Дагестану • 2 года работы</div>
+                <p>
+                    Я живу в Дагестане с детства и знаю каждый уголок этого удивительного края. 
+                    Проведу вас по самым живописным маршрутам, расскажу легенды и покажу места, 
+                    которые не найти в путеводителях.
+                </p>
+                <p class="languages">
+                    🌐 Языки: Русский • Английский • Даргинский
+                </p>
+                <p>
+                    📞 <strong>+7 988 986-57-13</strong>
+                </p>
+                <div class="contact-buttons" id="contacts">
+                    <a href="https://wa.me/79889865713" target="_blank" class="btn-whatsapp">
+                        💬 Написать в WhatsApp
+                    </a>
+                    <a href="https://t.me/ismail_guide" target="_blank" class="btn-telegram">
+                        ✈️ Написать в Telegram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ===== ПОДВАЛ ===== -->
+    <footer>
+        <p>© 2026 <span>Тур по Дагестану</span> | Все права защищены</p>
+        <p style="margin-top: 5px;">📞 +7 988 986-57-13 | 📧 ismail.guide@mail.ru</p>
+    </footer>
+</body>
+</html>
