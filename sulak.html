@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сулакский каньон | Тур по Дагестану</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        
+        nav {
+            background: rgba(26, 26, 26, 0.95);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #f39c12;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background: #f39c12;
+            color: #1a1a1a;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .tour-header {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .tour-header h1 {
+            font-size: 50px;
+            color: #f39c12;
+        }
+        
+        .tour-header p {
+            color: #aaa;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        
+        .price-badge {
+            display: inline-block;
+            background: #f39c12;
+            color: #1a1a1a;
+            padding: 10px 35px;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 15px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .gallery-item {
+            background: #2a2a2a;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            border-color: #f39c12;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .gallery-item .caption {
+            padding: 15px 20px;
+            color: #ccc;
+            font-weight: 600;
+        }
+        
+        .tour-description {
+            background: #2a2a2a;
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            margin: 30px 0;
+        }
+        
+        .tour-description h2 {
+            color: #f39c12;
+            margin-bottom: 15px;
+        }
+        
+        .tour-description p {
+            color: #bbb;
+            line-height: 1.8;
+        }
+        
+        .tour-description ul {
+            color: #ccc;
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .tour-description ul li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .tour-description ul li::before {
+            content: '✓';
+            color: #f39c12;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            padding: 12px 35px;
+            background: #f39c12;
+            color: #1a1a1a;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        
+        .btn-back:hover {
+            background: #e67e22;
+            transform: scale(1.05);
+        }
+        
+        .btn-whatsapp {
+            display: inline-block;
+            padding: 12px 35px;
+            background: #25D366;
+            color: #fff;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            margin-left: 15px;
+        }
+        
+        .btn-whatsapp:hover {
+            transform: scale(1.05);
+        }
+        
+        footer {
+            background: #1a1a1a;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid #333;
+            color: #888;
+            font-size: 14px;
+        }
+        
+        footer span {
+            color: #f39c12;
+        }
+        
+        @media (max-width: 768px) {
+            .tour-header h1 {
+                font-size: 32px;
+            }
+            
+            .btn-whatsapp {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">🏠 Главная</a></li>
+            <li><a href="sulak.html">Сулакский каньон</a></li>
+            <li><a href="derbent.html">Дербент</a></li>
+            <li><a href="gunib.html">Гуниб</a></li>
+            <li><a href="pesok.html">Песчаная гора</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="tour-header">
+            <h1>🏞️ Сулакский каньон</h1>
+            <p>Один из самых глубоких каньонов в мире</p>
+            <span class="price-badge">7 000 ₽</span>
+        </div>
+        
+        <!-- Фотогалерея -->
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="images/sulak-boat.jpg" alt="Прогулка на катере">
+                <div class="caption">🚤 Прогулка на катере по Сулакскому каньону</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/sulak-view.jpg" alt="Смотровая площадка">
+                <div class="caption">👀 Смотровая площадка с панорамным видом</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/sulak-water.jpg" alt="Чиркейское водохранилище">
+                <div class="caption">💧 Чиркейское водохранилище — бирюзовая вода</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/sulak-food.jpg" alt="Форелевое хозяйство">
+                <div class="caption">🐟 Обед в форелевом хозяйстве (рыба с фермы)</div>
+            </div>
+        </div>
+        
+        <!-- Описание тура -->
+        <div class="tour-description">
+            <h2>Что вас ждёт?</h2>
+            <p>
+                Сулакский каньон — это природное чудо, которое поражает своей красотой. 
+                Глубина каньона достигает 1920 метров, что делает его одним из самых глубоких в мире.
+            </p>
+            <ul>
+                <li><strong>🚤 Прогулка на катере</strong> — проплывём по бирюзовой воде каньона</li>
+                <li><strong>👀 Смотровая площадка</strong> — захватывающий вид с высоты птичьего полёта</li>
+                <li><strong>💧 Чиркейское водохранилище</strong> — крупнейшее в Дагестане</li>
+                <li><strong>🐟 Обед в форелевом хозяйстве</strong> — попробуйте свежую рыбу, выращенную на месте</li>
+            </ul>
+            <p>
+                <strong>⏰ Длительность:</strong> полный день (8-10 часов)<br>
+                <strong>👥 Группа:</strong> до 6 человек<br>
+                <strong>🍽️ Включено:</strong> трансфер, обед, катер, экскурсия
+            </p>
+            <div style="margin-top: 25px;">
+                <a href="index.html#tours" class="btn-back">← Назад к турам</a>
+                <a href="https://wa.me/79889865713?text=Здравствуйте! Хочу забронировать тур в Сулакский каньон" target="_blank" class="btn-whatsapp">
+                    💬 Забронировать
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2026 <span>Тур по Дагестану</span> | Все права защищены</p>
+        <p style="margin-top: 5px;">📞 +7 988 986-57-13 | 📧 ismail.guide@mail.ru</p>
+    </footer>
+</body>
+</html>
